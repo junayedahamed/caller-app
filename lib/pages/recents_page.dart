@@ -6,7 +6,6 @@ class RecentsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Recents')),
@@ -19,9 +18,7 @@ class RecentsPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Container(
               decoration: BoxDecoration(
-                color: isDark
-                    ? const Color(0xFF2B2930).withOpacity(0.6)
-                    : colorScheme.primaryContainer.withOpacity(0.3),
+                color: colorScheme.secondaryContainer.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: ListTile(
@@ -29,11 +26,11 @@ class RecentsPage extends StatelessWidget {
                 leading: CircleAvatar(
                   radius: 28,
                   backgroundColor: isMissed
-                      ? Colors.red.withOpacity(0.2)
+                      ? colorScheme.error.withOpacity(0.2)
                       : colorScheme.secondaryContainer,
                   child: Icon(
                     Icons.person,
-                    color: isMissed ? Colors.red : colorScheme.onSecondaryContainer,
+                    color: isMissed ? colorScheme.error : colorScheme.onSecondaryContainer,
                     size: 28,
                   ),
                 ),
@@ -42,7 +39,7 @@ class RecentsPage extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 16,
-                    color: isDark ? const Color(0xFFEADDFF) : colorScheme.onSurface,
+                    color: colorScheme.onSurface,
                   ),
                 ),
                 subtitle: Row(
@@ -50,16 +47,14 @@ class RecentsPage extends StatelessWidget {
                     Icon(
                       isMissed ? Icons.call_missed : Icons.call_made,
                       size: 14,
-                      color: isMissed ? Colors.red : Colors.green,
+                      color: isMissed ? colorScheme.error : colorScheme.secondary,
                     ),
                     const SizedBox(width: 6),
                     Text(
                       'Mobile, 2h ago',
                       style: TextStyle(
                         fontSize: 12,
-                        color: isDark
-                            ? const Color(0xFFB39DDB)
-                            : colorScheme.outline,
+                        color: colorScheme.outline,
                       ),
                     ),
                   ],
@@ -75,9 +70,7 @@ class RecentsPage extends StatelessWidget {
                     icon: Icon(
                       Icons.call,
                       size: 18,
-                      color: isDark
-                          ? const Color(0xFFEADDFF)
-                          : colorScheme.onSecondaryContainer,
+                      color: colorScheme.onSecondaryContainer,
                     ),
                     onPressed: () {},
                   ),
