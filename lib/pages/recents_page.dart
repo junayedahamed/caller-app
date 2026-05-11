@@ -137,7 +137,9 @@ class _RecentsPageState extends State<RecentsPage> {
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: colorScheme.secondaryContainer.withOpacity(0.3),
+                    color: colorScheme.secondaryContainer.withValues(
+                      alpha: 0.3,
+                    ),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: ListTile(
@@ -148,7 +150,7 @@ class _RecentsPageState extends State<RecentsPage> {
                     leading: CircleAvatar(
                       radius: 28,
                       backgroundColor: call.isMissed
-                          ? colorScheme.error.withOpacity(0.2)
+                          ? colorScheme.error.withValues(alpha: 0.2)
                           : colorScheme.secondaryContainer,
                       child: Icon(
                         Icons.person,
@@ -205,7 +207,9 @@ class _RecentsPageState extends State<RecentsPage> {
                       height: 42,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: colorScheme.secondaryContainer.withOpacity(0.5),
+                        color: colorScheme.secondaryContainer.withValues(
+                          alpha: 0.5,
+                        ),
                       ),
                       child: IconButton(
                         icon: Icon(
