@@ -6,6 +6,7 @@ class DialpadWidget extends StatelessWidget {
   final Function(String) onDigitPressed;
   final VoidCallback onBackspace;
   final VoidCallback onCallPressed;
+  final VoidCallback onLongBackPress;
 
   const DialpadWidget({
     super.key,
@@ -13,6 +14,7 @@ class DialpadWidget extends StatelessWidget {
     required this.onDigitPressed,
     required this.onBackspace,
     required this.onCallPressed,
+    required this.onLongBackPress,
   });
 
   @override
@@ -60,15 +62,19 @@ class DialpadWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 48,
-                    child: IconButton(
-                      icon: Icon(
+                  GestureDetector(
+                    onTap: () {
+                      onBackspace();
+                    },
+                    onLongPress: onLongBackPress,
+                    child: SizedBox(
+                      width: 48,
+                      child: Icon(
                         Icons.backspace_outlined,
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                         size: 24,
                       ),
-                      onPressed: onBackspace,
+                      // onPressed: onBackspace,
                     ),
                   ),
                 ],
