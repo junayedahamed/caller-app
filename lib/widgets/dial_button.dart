@@ -24,17 +24,19 @@ class _DialButtonState extends State<DialButton>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 100),
-      lowerBound: 0.0,
-      upperBound: 0.1,
-    )..addListener(() {
-        setState(() {});
-      });
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.88).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _controller =
+        AnimationController(
+          vsync: this,
+          duration: const Duration(milliseconds: 100),
+          lowerBound: 0.0,
+          upperBound: 0.1,
+        )..addListener(() {
+          setState(() {});
+        });
+    _scaleAnimation = Tween<double>(
+      begin: 1.0,
+      end: 0.88,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
   @override
@@ -56,18 +58,18 @@ class _DialButtonState extends State<DialButton>
       child: ScaleTransition(
         scale: _scaleAnimation,
         child: Container(
-          width: 88,
-          height: 88,
+          width: 68,
+          height: 68,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: isDark
-                ? const Color(0xFF4F378B).withOpacity(0.6)
+                ? const Color(0xFF4F378B).withValues(alpha: 0.6)
                 : const Color(0xFFEADDFF),
             border: Border.all(
               color: isDark
-                  ? colorScheme.primaryContainer.withOpacity(0.3)
-                  : colorScheme.outline.withOpacity(0.2),
-              width: 2,
+                  ? colorScheme.primaryContainer.withValues(alpha: 0.3)
+                  : colorScheme.outline.withValues(alpha: 0.2),
+              width: 1.5,
             ),
           ),
           child: Column(
@@ -76,17 +78,19 @@ class _DialButtonState extends State<DialButton>
               Text(
                 widget.digit,
                 style: TextStyle(
-                  fontSize: 38,
+                  fontSize: 28,
                   fontWeight: FontWeight.w900,
-                  color: isDark ? const Color(0xFFD0BCFF) : const Color(0xFF381E72),
+                  color: isDark
+                      ? const Color(0xFFD0BCFF)
+                      : const Color(0xFF381E72),
                 ),
               ),
               if (widget.subtitle.isNotEmpty)
                 Text(
                   widget.subtitle,
                   style: TextStyle(
-                    fontSize: 11,
-                    letterSpacing: 2,
+                    fontSize: 9,
+                    letterSpacing: 1,
                     color: isDark
                         ? const Color(0xFFB39DDB).withOpacity(0.9)
                         : const Color(0xFF49454E),
