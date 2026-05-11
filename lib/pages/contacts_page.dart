@@ -21,12 +21,15 @@ class ContactsPage extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 color: isDark
-                    ? const Color(0xFF2B2930).withOpacity(0.6)
-                    : colorScheme.primaryContainer.withOpacity(0.3),
+                    ? const Color(0xFF2B2930).withValues(alpha: 0.6)
+                    : colorScheme.primaryContainer.withValues(alpha: 0.3),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: ListTile(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
                 leading: CircleAvatar(
                   radius: 28,
                   backgroundColor: isDark
@@ -48,14 +51,18 @@ class ContactsPage extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 16,
-                    color: isDark ? const Color(0xFFEADDFF) : colorScheme.onSurface,
+                    color: isDark
+                        ? const Color(0xFFEADDFF)
+                        : colorScheme.onSurface,
                   ),
                 ),
                 subtitle: Text(
                   phone,
                   style: TextStyle(
                     fontSize: 12,
-                    color: isDark ? const Color(0xFFB39DDB) : colorScheme.outline,
+                    color: isDark
+                        ? const Color(0xFFB39DDB)
+                        : colorScheme.outline,
                   ),
                 ),
                 trailing: Container(
@@ -63,7 +70,9 @@ class ContactsPage extends StatelessWidget {
                   height: 42,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: colorScheme.secondaryContainer.withOpacity(0.5),
+                    color: colorScheme.secondaryContainer.withValues(
+                      alpha: 0.5,
+                    ),
                   ),
                   child: IconButton(
                     icon: Icon(
