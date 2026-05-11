@@ -30,6 +30,13 @@ class _RecentsPageState extends State<RecentsPage> {
     }
   }
 
+  void onLongBackPress() {
+    setState(() {
+      _searchQuery = '';
+      _filterCalls();
+    });
+  }
+
   void _filterCalls() {
     if (_searchQuery.isEmpty) {
       _filteredCalls = mockRecentCalls;
@@ -231,6 +238,7 @@ class _RecentsPageState extends State<RecentsPage> {
               left: 0,
               right: 0,
               child: DialpadWidget(
+                onLongBackPress: onLongBackPress,
                 phoneNumber: _searchQuery,
                 onDigitPressed: _onDigitPressed,
                 onBackspace: _onBackspace,
