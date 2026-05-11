@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pages/recents_page.dart';
 import 'pages/contacts_page.dart';
-import 'pages/dialpad_page.dart';
 import 'theme/app_theme.dart';
 
 void main() {
@@ -18,7 +17,7 @@ class CallerApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.dark, // Default to dark mode
+      themeMode: ThemeMode.light, // Default to dark mode
       home: const MainNavigationPage(),
     );
   }
@@ -32,12 +31,11 @@ class MainNavigationPage extends StatefulWidget {
 }
 
 class _MainNavigationPageState extends State<MainNavigationPage> {
-  int _selectedIndex = 2; // Default to Keypad
+  int _selectedIndex = 0; // Default to Recents
 
   final List<Widget> _pages = [
     const RecentsPage(),
     const ContactsPage(),
-    const DialpadPage(),
   ];
 
   @override
@@ -82,10 +80,6 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
             icon: Icon(Icons.person_outline),
             selectedIcon: Icon(Icons.person),
             label: 'Contacts',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.dialpad),
-            label: 'Keypad',
           ),
         ],
       ),
